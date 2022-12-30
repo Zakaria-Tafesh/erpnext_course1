@@ -1,13 +1,18 @@
 import requests
+from decouple import config
+
 
 URL_COURSES = 'http://127.0.0.1:8000/api/courses'
 URL_STUDENTS = 'http://127.0.0.1:8000/api/students'
 URL_SCHEDULE = 'http://127.0.0.1:8000/api/schedules'
 
 
-def get_courses():
-    res = requests.get(URL_COURSES)
+headers = {'X-API-KEY': config('API_KEY')}
 
+
+def get_courses():
+    res = requests.get(URL_COURSES, headers=headers)
+    print(res)
     res_json = res.json()
     all_courses = res_json['courses']
     header = res_json['header']
@@ -23,7 +28,7 @@ def get_courses():
 
 
 def get_students():
-    res = requests.get(URL_STUDENTS)
+    res = requests.get(URL_STUDENTS, headers=headers)
     print('#'*100)
     print(res)
     res_json = res.json()
@@ -41,7 +46,7 @@ def get_students():
 
 
 def get_schedules():
-    res = requests.get(URL_SCHEDULE)
+    res = requests.get(URL_SCHEDULE, headers=headers)
     print('#'*100)
     print(res)
     res_json = res.json()
@@ -56,3 +61,7 @@ def get_schedules():
     else:
         print('ERROR schedules all_students')
         return False
+
+
+if __name__ == '__main__':
+    get_courses()
