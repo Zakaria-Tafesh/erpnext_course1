@@ -47,7 +47,7 @@ components:
       type: apiKey
       in: header       # can be "header", "query" or "cookie"
       name: X-API-KEY  # name of the header, query parameter or cookie
-
+      x-apikeyInfoFunc: utils.apikey_auth
 # 2) Apply the API key globally to all operations
 security:
   - ApiKeyAuth: []     # use the same name as under securitySchemes

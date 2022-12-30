@@ -1,8 +1,11 @@
 import datetime
 import json
 
+from connexion.exceptions import OAuthProblem
+
 from db import select
 from cmd_interact.utils import convert_delta_to_time
+from decouple import config
 
 
 def get_columns_names(table_name):
@@ -101,6 +104,18 @@ def json_serial(obj):
 
     raise TypeError("Type %s not serializable" % type(obj))
 
+
+def apikey_auth(token, required_scopes):
+    decrypted_token = config('API_KEY')
+    if token == decrypted_token:
+        return {'sub': decrypted_token}
+    else:
+        raise OAuthProblem('Invalid token')
+
+
+# def operation(user):
+#     data = get_data_for_token(user)
+#     return data
 
 if __name__ == '__main__':
     get_response_students()
