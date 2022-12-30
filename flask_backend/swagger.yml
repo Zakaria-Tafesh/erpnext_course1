@@ -1,0 +1,54 @@
+# swagger.yml
+
+openapi: 3.0.0
+info:
+  title: "Zak Flask REST API"
+  description: "An API about Final Project for ERPNEXT Course"
+  version: "1.0.0"
+
+servers:
+  - url: "/api"
+
+paths:
+  /courses:
+    get:
+      operationId: "utils.get_response_courses"
+      tags:
+        - "Courses"
+      summary: "Read the list of Courses"
+      responses:
+        "200":
+          description: "Successfully read Courses list"
+
+  /students:
+    get:
+      operationId: "utils.get_response_students"
+      tags:
+        - "Students"
+      summary: "Read the list of Students"
+      responses:
+        "200":
+          description: "Successfully read Students list"
+
+  /schedules:
+    get:
+      operationId: "utils.get_response_schedules"
+      tags:
+        - "Schedules"
+      summary: "Read the list of Schedules"
+      responses:
+        "200":
+          description: "Successfully read Schedules list"
+
+
+# 1) Define the key name and location
+components:
+  securitySchemes:
+    ApiKeyAuth:        # arbitrary name for the security scheme
+      type: apiKey
+      in: header       # can be "header", "query" or "cookie"
+      name: X-API-KEY  # name of the header, query parameter or cookie
+
+# 2) Apply the API key globally to all operations
+security:
+  - ApiKeyAuth: []     # use the same name as under securitySchemes
