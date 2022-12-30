@@ -13,7 +13,7 @@ def courses_home():
         'list_dicts': courses,
         'headers': headers
     }
-    return render_template("zak_table.html", **context)
+    return render_template("new_table.html", **context)
 
 
 @app.route("/students")
@@ -25,7 +25,7 @@ def students_home():
         'list_dicts': students,
         'headers': headers
     }
-    return render_template("zak_table.html", **context)
+    return render_template("new_table.html", **context)
 
 
 @app.route("/schedules")
@@ -37,7 +37,7 @@ def schedules_home():
         'list_dicts': schedules,
         'headers': headers
     }
-    return render_template("zak_table.html", **context)
+    return render_template("new_table.html", **context)
 
 
 if __name__ == "__main__":
