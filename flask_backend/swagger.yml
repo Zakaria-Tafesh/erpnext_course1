@@ -40,7 +40,6 @@ paths:
         "200":
           description: "Successfully read Schedules list"
 
-
 # 1) Define the key name and location
 components:
   securitySchemes:
