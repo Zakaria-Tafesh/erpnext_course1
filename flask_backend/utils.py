@@ -105,12 +105,12 @@ def json_serial(obj):
     raise TypeError("Type %s not serializable" % type(obj))
 
 
-def apikey_auth(token, required_scopes):
-    decrypted_token = config('API_KEY')
-    if token == decrypted_token:
-        return {'sub': decrypted_token}
+def apikey_auth(apikey, required_scopes):
+    secret_apikey = config('API_KEY')
+    if apikey == secret_apikey:
+        return {'sub': secret_apikey}
     else:
-        raise OAuthProblem('Invalid token')
+        raise OAuthProblem('Invalid API-KEY')
 
 
 # def operation(user):
