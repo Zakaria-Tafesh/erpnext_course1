@@ -42,7 +42,7 @@
     - Install all required packages for this project by:
       - `$ pip3 install -r requirements.txt`
     - Then you can easily run the cmd interaction script by:
-      - `$ python3 cmd`
+      - `$ python3 cmd_interact/cmd_interact.py`
 
     
   
